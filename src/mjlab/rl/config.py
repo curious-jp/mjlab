@@ -28,6 +28,21 @@ class RslRlModelCfg:
 
   ``None`` means deterministic output (use for critic).
   """
+  observation_encoder_cfg: dict[str, Any] | None = None
+  """Observation-encoder config. When set, ``class_name`` should point at
+  ``EncoderMLPModel`` (e.g.
+  ``"src.rl_models.encoder_mlp_model:EncoderMLPModel"``).
+
+  Opt-in: ``None`` (default) is stripped before reaching the model, so existing
+  ``MLPModel``/``CNNModel`` configs are unaffected. See
+  ``docs/observation_encoders.md`` in unitree_rl_mjlab for the schema.
+  """
+  moe_cfg: dict[str, Any] | None = None
+  """Mixture-of-Experts actor config. When set, ``class_name`` should point at
+  ``MoEMLPModel`` (e.g. ``"src.rl_models.moe_model:MoEMLPModel"``).
+
+  Opt-in: ``None`` (default) is stripped before reaching plain model classes.
+  """
   class_name: str = "MLPModel"
   """Model class name resolved by RSL-RL (MLPModel or CNNModel)."""
 
