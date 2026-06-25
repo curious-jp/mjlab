@@ -2,6 +2,21 @@
 Changelog
 =========
 
+Upcoming version (not yet released)
+-----------------------------------
+
+Added
+^^^^^
+
+- Added ``height_scan_occluded`` observation that returns a realistic,
+  occlusion-aware height scan: a 2.5D line-of-sight test from a virtual LiDAR
+  marks cells hidden behind nearer-taller terrain (or with no return) as
+  invalid, returning the normalized height plus a per-cell validity mask. The
+  core ``compute_visibility_mask`` lives in
+  ``mjlab.envs.mdp.height_scan_occlusion``.
+- Added a public ``RayCastSensor.local_offsets`` property exposing the per-ray
+  local origin offsets.
+
 Version 1.2.0 (March 6, 2026)
 -----------------------------
 

@@ -607,6 +607,12 @@ class RayCastSensor(Sensor[RayCastData]):
   def num_rays(self) -> int:
     return self._num_rays
 
+  @property
+  def local_offsets(self) -> torch.Tensor:
+    """[N, 3] per-ray origin offsets in the sensor's local frame."""
+    assert self._local_offsets is not None
+    return self._local_offsets
+
   def debug_vis(self, visualizer: DebugVisualizer) -> None:
     if not self.cfg.debug_vis:
       return
